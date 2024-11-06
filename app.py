@@ -1,60 +1,54 @@
-from dash import Dash, html, dcc, Output, Input
-from data import d_graph, line_graphs_for_trends_over_time, bar_charts_for_comparison, dates, year_2019, year_2020, year_2021, year_2022, year_2023, year_2024
-app = Dash(__name__)
+import dash
+from dash import Dash, html, dcc
+import dash_bootstrap_components as dbc
 
-figures = d_graph()
+app = Dash(external_stylesheets=[dbc.themes.LUX], use_pages=True)
 
+navbar = dbc.NavbarSimple(
+    children=[
+        dbc.NavItem(dbc.NavLink("Youth", href="/youth")),
+        dbc.NavItem(dbc.NavLink("Unemployement", href="/unemployement")),
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem("About project", href="/about"),
+                dbc.DropdownMenuItem("About Team", href="/team"),
+            ],
+            nav=True,
+            in_navbar=True,
+            label="More",
+        ),
+    ],
+    brand="TYaza team",
+    brand_href="/",
+    color="primary",
+    dark=True,
+)
 
-# Get the first key dynamically for the default value
-default_value = next(iter(figures))
+app.layout = html.Div(
+    [
+        navbar,
+        html.Div(
+            [
+                dbc.Container(
+                    [
+                        dash.page_container,
+                    ]
+                ),
+                html.Footer(
+                    dbc.Container(
+                        "Reference: National Institute of Statistics of Rwanda (NISR), Labour Force Survey, Q2 2024."
+                    ),
+                    className="mt-4 py-4 bg-dark text-light",
+                ),
+            ],
+            style={"min-height": "calc(100vh - 7rem)"},
+            className="d-flex flex-column justify-content-between",
+        ),
+    ],
+    className="d-grid gap-4",
+)
 
-bar_charts = dict()
-bar_charts['year_2019'] = bar_charts_for_comparison(dates[:4], year_2019)
-bar_charts['year_2020'] = bar_charts_for_comparison(dates[4:][:4], year_2020)
-bar_charts['year_2021'] = bar_charts_for_comparison(dates[8:][:4], year_2021)
-bar_charts['year_2022'] = bar_charts_for_comparison(dates[12:][:4], year_2022)
-bar_charts['year_2023'] = bar_charts_for_comparison(dates[16:][:4], year_2023)
-bar_charts['year_2024'] = bar_charts_for_comparison(dates[20:][:4], year_2024)
+server = app.server
 
-# Define the layout of the app
-app.layout = html.Div([
-    dcc.Dropdown(
-        id='figure-dropdown',
-        options=[{'label': key, 'value': key} for key in figures.keys()],
-        value=default_value,  # Use the first key as the default value
-        clearable=False
-    ),
-    dcc.Graph(id='selected-graph'),
-    dcc.Graph(
-        id="line_graphs_for_trends_over_time",
-        figure=line_graphs_for_trends_over_time()
-    ),
-#  dcc.Dropdown(
-#         id='year-dropdown',
-#         options=[{'label': year, 'value': year} for year in data.keys()],
-#         value='2024',  # Default value set to 2024
-#         clearable=False
-#     ),
-#     dcc.Graph(id='year-graph')
-    dcc.Dropdown(
-        id='year-dropdown',
-        options=[{'label': key, 'value': key} for key in bar_charts.keys()],
-        value=next(iter(bar_charts)),  # Use the first key as the default value
-        clearable=False
-    ),
-    dcc.Graph(id='selected-graph'),
-
-])
-
-# @app.callback(
-#     Output('selected-graph', 'figure'),
-#     Output('selected-graph', 'figure'),
-#     Input('figure-dropdown', 'value'),
-#     Input('year-dropdown', 'value'),
-# )
-
-# def update_graph(selected_figure):
-#     return figures[selected_figure]
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
