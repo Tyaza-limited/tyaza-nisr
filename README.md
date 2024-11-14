@@ -20,11 +20,11 @@ Contact us: [team@tyaza.org](mailto:team@tyaza.org)
 ## How to get started
 1. Make sure git is installed on your system
 ```
-git clone
+git clone https://github.com/Tyaza-limited/tyaza-nisr.git
 ```
 2. Make sure python3 is installed on your system
 ```
-cd 
+cd tyaza-nisr
 ```
 3. Install project dependencies
 ```
