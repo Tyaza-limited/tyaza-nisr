@@ -34,6 +34,7 @@ pip install
 ```
 python app.py
 ```
+# Demo video at [https://github.com/Tyaza-limited/tyaza-nisr/blob/main/2024-11-14%2008-59-56.mkv](https://github.com/Tyaza-limited/tyaza-nisr/blob/main/2024-11-14%2008-59-56.mkv)
 ## Team 
 1. [UWITONDANISHEMA Muslim](https://github.com/musilimu)
 2. [KWIZERA Elisa](https://github.com/musilimu)
