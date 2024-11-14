@@ -37,4 +37,9 @@ python app.py
 ## Team 
 1. [UWITONDANISHEMA Muslim](https://github.com/musilimu)
 2. [KWIZERA Elisa](https://github.com/musilimu)
-3. Peace
+3. HOGOZA Peace
+
+## Previews
+
+1. [https://tyaza-nisr.onrender.com/](https://tyaza-nisr.onrender.com/)
+2. [https://team.tyaza.org/](https://team.tyaza.org/)
