@@ -32,7 +32,7 @@ pip install
 ```
 4. Run project from your terminal
 ```
-python app.py
+gunicorn app:server
 ```
 # Demo video at [https://github.com/Tyaza-limited/tyaza-nisr/blob/main/2024-11-14%2008-59-56.mkv](https://github.com/Tyaza-limited/tyaza-nisr/blob/main/2024-11-14%2008-59-56.mkv)
 ## Team 
