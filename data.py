@@ -3,7 +3,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-excel_file = pd.ExcelFile("RW_Quarterly_LFS_Tables_2024Q2.xlsx")
+excel_file = pd.ExcelFile("datasets/RW_Quarterly_LFS_Tables_2024Q2.xlsx")
 
 dfs = {}
 
